@@ -22,7 +22,6 @@ class MilkModel:
     def calculate_milk_production(self, cow):
         """คำนวณปริมาณน้ำนมจากอายุของวัว"""
         age = cow['Age']
-        # ตรวจสอบว่า Age มีข้อมูลหรือไม่เพื่อป้องกันข้อผิดพลาด
         if age:
             years, months = map(int, age.replace(' years ', ' ').replace(' months', '').split())
             milk_amount = years + (months / 12)  # คำนวณน้ำนมจากปีและเดือน

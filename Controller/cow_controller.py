@@ -14,12 +14,12 @@ class CowController:
     def check_animal(self):
         animal_id = self.view.get_id_input()
         if not animal_id.isdigit() or len(animal_id) != 8 or animal_id.startswith('0'):
-            self.view.show_message("ID ไม่ถูกต้อง: ต้องเป็นตัวเลข 8 หลักและไม่เริ่มต้นด้วย 0")
+            self.view.show_message("IDไม่ถูกต้อง: ต้องเป็นตัวเลข 8 หลักและไม่เริ่มต้นด้วย 0")
             return
 
         animal = self.model.get_animal_by_id(animal_id)
         if animal is None:
-            self.view.show_message("ไม่พบสัตว์ที่มี ID นี้")
+            self.view.show_message("ไม่พบสัตว์ที่มีIDนี้")
         else:
             if animal['Age'] == '':  # หากเป็นแพะ
                 self.view.show_message(f"ตรวจพบแพะ (ID : {animal_id}) กรุณไล่มันออกไป!")
