@@ -7,8 +7,8 @@ class UdderChangeModel:
     def check_udder_change(self, cow):
         udders = int(cow['Udders'])
         if udders == 3:
-            # โอกาส 99% วัวจะกลับมามีเต้านม 4 เต้า
-            if random.random() < 0.99:
+            # โอกาส 20% วัวจะกลับมามีเต้านม 4 เต้า
+            if random.random() < 0.20:
                 print(f"ก่อนเปลี่ยนแปลง: วัว (ID: {cow['ID']}) มีเต้านม {cow['Udders']} เต้า")
 
                 # อัปเดตข้อมูลใน cow และใน self.data ด้วย

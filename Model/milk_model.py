@@ -11,12 +11,12 @@ class MilkModel:
             if random.random() < 0.05:
                 cow['Udders'] = '3'
                 self.model.save_data()  # บันทึกการเปลี่ยนแปลงไปยัง CSV
-                return f"วัว (รหัส: {cow['ID']}) ถูกรีดนมและเสียเต้านมไป 1 เต้า เหลือ {cow['Udders']} เต้า"
+                return f"วัว (ID : {cow['ID']}) ถูกรีดนมและเสียเต้านมไป 1 เต้า เหลือ {cow['Udders']} เต้า"
             else:
                 # คำนวณปริมาณน้ำนมที่ผลิตได้
                 milk_amount = self.calculate_milk_production(cow)
                 self.model.save_data()  # บันทึกการเปลี่ยนแปลงไปยัง CSV
-                return f"วัว (รหัส: {cow['ID']}) ถูกรีดนมสำเร็จ มี {cow['Udders']} เต้า ผลิตน้ำนมได้ {milk_amount} ลิตร"
+                return f"วัว (ID : {cow['ID']}) ถูกรีดนมสำเร็จ มี {cow['Udders']} เต้า ผลิตน้ำนมได้ {milk_amount} ลิตร"
         return "วัวไม่สามารถรีดนมได้เนื่องจากมีเต้านมไม่ครบ 4 เต้า"
 
     def calculate_milk_production(self, cow):
