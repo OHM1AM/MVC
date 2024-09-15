@@ -14,12 +14,12 @@ class CowController:
     def check_animal(self):
         animal_id = self.view.get_id_input()
         if not animal_id.isdigit() or len(animal_id) != 8 or animal_id.startswith('0'):
-            self.view.show_message("IDไม่ถูกต้อง: ต้องเป็นตัวเลข 8 หลักและไม่เริ่มต้นด้วย 0")
+            self.view.show_message("ID ไม่ถูกต้อง: ต้องเป็นตัวเลข 8 หลักและไม่เริ่มต้นด้วย 0")
             return
 
         animal = self.model.get_animal_by_id(animal_id)
         if animal is None:
-            self.view.show_message("ไม่พบสัตว์ที่มีIDนี้")
+            self.view.show_message("ไม่พบสัตว์ที่มี ID นี้")
         else:
             if animal['Age'] == '':  # หากเป็นแพะ
                 self.view.show_message(f"ตรวจพบแพะ (ID : {animal_id}) กรุณไล่มันออกไป!")
@@ -29,6 +29,10 @@ class CowController:
                     self.view.show_milk_popup()
                 else:
                     self.view.show_message("วัวไม่สามารถรีดนมได้เนื่องจากมีเต้านมไม่ครบ 4 เต้า")
+                    # เรียกใช้การเปลี่ยนแปลงเต้านม
+                    change_message = self.udder_change_model.check_udder_change(animal)
+                    if change_message != "ไม่มีการเปลี่ยนแปลงเต้านม":
+                        self.view.show_message(change_message)
 
     def milk_cow(self):
         animal = self.model.get_animal_by_id(self.view.get_id_input())
